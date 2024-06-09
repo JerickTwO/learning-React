@@ -34,17 +34,19 @@ function App() {
   // null es que no hay ganador, false es que hay empate
   const [winner, setWinner] = useState(null)
 
-  const checkWinner = (boadToCheck) => {
+  const checkWinner = (boardToCheck) => {
+    // Revisamos las pocisiones para ver si hay ganador de x o y
     for (const combo of WINNER_COMBOS){
       const [a, b, c] = combo
       if(
-        boadToCheck[a] &
-        boadToCheck[a] === boadToCheck[b] &&
-        boadToCheck[a] === boadToCheck[c] 
+        boardToCheck[a] &&
+        boardToCheck[a] === boardToCheck[b] &&
+        boardToCheck[a] === boardToCheck[c] 
       ){
-        return boadToCheck[a]
+        return boardToCheck[a]
       }
     }
+    // Si no hay ganador
     return null
   }
 
@@ -56,13 +58,14 @@ function App() {
     const newBoard = [...board]
     newBoard[index] = turn
     setBoard(newBoard)
-
+    // Cambiar el turno
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X
     setTurn(newTurn)
 
     const newWinner = checkWinner(newBoard)
     if(newWinner){
-      setWinner(neWinner)
+      alert(`El ganador es ${newWinner}`)
+      setWinner(newWinner)
     }
   }
 

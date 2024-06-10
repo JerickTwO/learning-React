@@ -65,7 +65,10 @@ function App() {
     const newWinner = checkWinner(newBoard)
     if(newWinner){
       alert(`El ganador es ${newWinner}`)
-      setWinner(newWinner)
+      setWinner((preWinner)=>{
+        console.log(`Ganador: ${newWinner}, el anterior era ${preWinner}`)
+        return newWinner
+      })
     }
   }
 
@@ -85,7 +88,7 @@ function App() {
               </Square>
             )
           })
-        } 
+        }
       </section>
       <section className='turn'>
         <Square isSelected={turn === TURNS.X}>

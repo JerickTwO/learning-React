@@ -1,0 +1,21 @@
+.container {
+  position: absolute;
+  margin: 20px;
+}
+picture{
+  left: -460px;
+  bottom: 300px;
+  position: relative;
+  transform: rotate(100) translate(300px);
+}
+
+.animar {
+  animation: animar1 2s infinite ease-in-out;
+  animation-play-state: running;
+}
+
+@keyframes animar1 {
+  100% {
+    rotate: 300px ;
+  }
+}
